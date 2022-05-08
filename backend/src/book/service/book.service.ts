@@ -8,7 +8,9 @@ export class BookService {
     <BookEntity>{ id: 2, title: 'Angular' },
   ];
   async getAll(): Promise<BookEntity[]> {
-    console.log('getAll()');
     return this.books;
+  }
+  async getById(id): Promise<BookEntity> {
+    return this.books.find((_book: BookEntity) => _book.id === Number(id.id));
   }
 }
