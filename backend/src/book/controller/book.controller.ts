@@ -7,7 +7,10 @@ export class BookController {
   constructor(private bookService: BookService) {}
   @Get()
   async getAll(): Promise<BookEntity[]> {
-    return await this.bookService.getAll();
+    const promise = this.bookService.getAll().then((_result) => _result);
+    console.log(promise);
+    return promise;
+    // return await this.bookService.getAll();
   }
   @Get(':id')
   async getById(@Param() id): Promise<BookEntity> {
