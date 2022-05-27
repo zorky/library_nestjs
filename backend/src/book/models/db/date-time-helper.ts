@@ -1,6 +1,6 @@
 import { CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-export class DateTimeHelperDb {
+export class DateTimeHelper {
   @CreateDateColumn({ name: 'dt_created' })
   createdAt: string;
 

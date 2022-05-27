@@ -1,9 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { BookDb } from './book.db';
-import {DateTimeHelperDb} from "./date-time-helper.db";
+import { DateTimeHelper } from './date-time-helper';
 
 @Entity({ name: 'author' })
-export class AuthorDb extends DateTimeHelperDb {
+export class AuthorDb extends DateTimeHelper {
   @PrimaryGeneratedColumn()
   public id: number;
   @Column({ nullable: false, name: 'first_name' })

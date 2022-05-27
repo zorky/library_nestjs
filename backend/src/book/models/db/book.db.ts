@@ -7,12 +7,12 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { AuthorDb } from './author.db';
-import {DateTimeHelperDb} from "./date-time-helper.db";
+import { DateTimeHelper } from './date-time-helper';
 
 @Entity({ name: 'book' })
-export class BookDb extends DateTimeHelperDb {
-  @PrimaryGeneratedColumn()
-  public id: number;
+export class BookDb extends DateTimeHelper {
+  @PrimaryGeneratedColumn('uuid')
+  public uuid!: string;
   @Column({ nullable: false })
   @Index()
   public title: string;
