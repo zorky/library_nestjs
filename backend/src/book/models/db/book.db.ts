@@ -12,7 +12,7 @@ import { DateTimeHelper } from './date-time-helper';
 @Entity({ name: 'book' })
 export class BookDb extends DateTimeHelper {
   @PrimaryGeneratedColumn('uuid')
-  public uuid!: string;
+  public uuid: string;
   @Column({ nullable: false })
   @Index()
   public title: string;
