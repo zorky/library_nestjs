@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
 import { BookModule } from './book/book.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthorModule } from './author/author.module';
 
 @Module({
   imports: [
     BookModule,
+    AuthorModule,
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'library.db',
@@ -12,7 +14,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       synchronize: true,
     }),
   ],
-  controllers: [],
   providers: [],
 })
 export class AppModule {}

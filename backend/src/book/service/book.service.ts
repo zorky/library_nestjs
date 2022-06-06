@@ -1,16 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { BookEntity } from '../book.entity';
+import {InjectRepository} from "@nestjs/typeorm";
+import {Repository} from "typeorm";
+import {BookDb} from "../../models/db/book.db";
 
 @Injectable()
 export class BookService {
-  books: BookEntity[] = [
-    <BookEntity>{ id: 1, title: 'NestJS 101' },
-    <BookEntity>{ id: 2, title: 'Angular' },
-  ];
-  async getAll(): Promise<BookEntity[]> {
-    return this.books;
+  constructor(
+      @InjectRepository(BookDb)
+      private booksRepository: Repository<BookDb>,
+  ) {}
+  async getAll(): Promise<BookDb[]> {
+    return this.booksRepository.find();
   }
-  async getById(id): Promise<BookEntity> {
-    return this.books.find((_book: BookEntity) => _book.id === Number(id.id));
+  async getById(id): Promise<BookDb> {
+    return this.booksRepository.findOne(id);
   }
 }
